@@ -1,0 +1,7 @@
+FROM plantuml/plantuml-server:tomcat
+
+# Dev only libraries
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt install git -y
+RUN apt install vim -y

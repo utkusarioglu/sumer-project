@@ -1,0 +1,12 @@
+{
+  "name": "sumer-project",
+  "dockerComposeFile": ["../docker-compose.dev.yml", "docker-compose.yml"],
+  "service": "project",
+  "workspaceFolder": "/usr/src/app/project",
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#740"
+    }
+  },
+  "extensions": ["jebbs.plantuml"]
+}
