@@ -2,7 +2,7 @@
 '' uri in every puml file. It also allows easy switching of themes
 '' if the need ever arises
 @startuml
-!theme utku from https://gist.githubusercontent.com/utkusarioglu/20ccbe51bfc362b9fe12e894237eccc3/raw/666b8bf2e8508b2139846a7b9e764c4389a60f41/
+!theme utku from https://gist.githubusercontent.com/utkusarioglu/20ccbe51bfc362b9fe12e894237eccc3/raw/9baa4a504eb61b7183c8ea939de3f6c1b931280b
 skinparam actor {
   FontColor $SECONDARY_TEXT
 }
