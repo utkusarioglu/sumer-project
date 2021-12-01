@@ -1,0 +1,20 @@
+@startuml Sumer Polygon Deployment Diagram
+!include theme.puml
+title Sumer Polygon Deployment Diagram
+
+!includesub ../kafka/kafka.deploy.puml!KafkaMsSub
+!includesub ../kafka/kafka-connect.deploy.puml!KafkaConnectMsSub
+
+!startsub PolygonMsSub
+frame Polygon <<ms>> {
+  node "PolygonDispatcher" as PolygonDispatcherCont <<container>> 
+  node "Apache Cassandra" as PolygonDispatcherDbCont <<container>> 
+}
+!endsub
+
+PolygonDispatcherCont -[$DARK]- PolygonDispatcherDbCont : through Kafka ms
+Kafka -0)- KafkaConnect
+PolygonDispatcherCont -0)- Kafka
+PolygonDispatcherDbCont -0)- KafkaConnect
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml Sumer Deployment diagram
+!include theme.puml
+title Sumer Deployment diagram
+
+() InfuraAPI
+() GatewayAPI
+
+node Cloud {
+  [Gateway MS] as GatewayMs
+  [Polygon Dispatcher MS] as PolygonMs
+}
+
+node Blockchain {
+  [Infura Provider] as InfuraProvider
+}
+note right of InfuraProvider
+  It's possible for the cloud infrastructure to use its own node(s) for
+  chain updates but at this level of the project, we of to use infura's
+  service.
+endnote
+
+[WebDapp]
+note top of WebDapp
+  This can also be a mogule or desktop client. THe api is intended to
+  be homogeneous
+endnote
+
+WebDapp .r.( GatewayAPI : optional
+GatewayAPI -r- GatewayMs
+WebDapp -d-( InfuraAPI
+InfuraAPI -d- InfuraProvider
+PolygonMs -d-( InfuraAPI
+note on link
+  Microservice design shall allow for the provider to be replaced
+  with the project's own nodes
+endnote
+
+
+
+@enduml

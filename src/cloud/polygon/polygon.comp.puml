@@ -1,0 +1,27 @@
+@startuml Sumer Polygon Component Diagram
+!include theme.puml
+title Sumer Polygon Component Diagram
+
+cloud Infura
+
+component PolygonDispatcher {
+  port KafkaPort
+  port InfuraPort
+
+  component MaticJs <<library>>
+  component KafkaJs <<library>>
+  
+  InfuraPort - MaticJs
+  KafkaJs - KafkaPort
+   
+  MaticJs - KafkaJs
+}
+
+component "Apache Cassandra" as PolygonDispatcherDb {
+  artifact "K8s ConfigMap"
+}
+
+KafkaPort -0)- PolygonDispatcherDb : Kafka Connect
+Infura -0)- InfuraPort
+
+@enduml

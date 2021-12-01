@@ -1,0 +1,17 @@
+@startuml Sumer Ingress Deployment Diagram
+!include theme.puml
+title Sumer Ingress Deployment Diagram
+
+!startsub IngressMsSub
+frame Ingress as IngressMs <<ms>> {
+  node "Nginx Ingress" as Ingress <<container>> {
+
+  }
+}
+
+boundary Internet
+
+Internet - Ingress
+!endsub
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml Demeter Cloud infrastructure component diagram
+!include theme.puml
+title Demeter Cloud infrastructure component diagram
+
+left to right direction
+
+boundary Internet
+
+[Ingress Ms] as IngressMs 
+[Kafka Ms] as KafkaMs 
+[Gateway Ms] as GatewayMs   
+[PolygonDispatcher Ms] as PolygonDispatcherMs 
+[WebDappServer Ms] as WebDappHostMs 
+[Auth Ms] as AuthMs 
+[CommunityFilters Ms] as CommunityFiltersMs   
+[PostFilters Ms] as PostFiltersMs   
+[CommentFilters Ms] as CommentFiltersMs 
+[Zookeeper Ms] as ZookeeperMs 
+
+IngressMs -[$BLUE]l- Internet
+IngressMs -[$DARK]0)-- GatewayMs
+IngressMs -[$DARK]0)-- WebDappHostMs
+ZookeeperMs -0)- KafkaMs
+KafkaMs -0)- GatewayMs
+KafkaMs -0)- PolygonDispatcherMs
+KafkaMs -0)- WebDappHostMs
+KafkaMs -0)- AuthMs
+KafkaMs -0)- CommunityFiltersMs
+KafkaMs -0)- PostFiltersMs 
+KafkaMs -0)- CommentFiltersMs
+
+@enduml

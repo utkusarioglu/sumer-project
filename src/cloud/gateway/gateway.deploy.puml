@@ -1,0 +1,13 @@
+@startuml Sumer Gateway Deployment Diagram
+!include theme.puml
+title Sumer Gateway Deployment Diagram
+
+!includesub ../kafka/kafka.deploy.puml!KafkaMsSub
+
+frame "Gateway" as GatewayMs <<ms>> {
+  node "Gateway Api Server" as Gateway 
+}
+
+Gateway -l0)- Kafka
+
+@enduml

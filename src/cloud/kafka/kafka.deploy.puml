@@ -1,0 +1,25 @@
+@startuml Sumer Kafka Deployment Diagram
+!include theme.puml
+title Sumer Kafka Deployment Diagram
+
+!includesub ./kafka-connect.deploy.puml!KafkaConnectMsSub
+
+!startsub KafkaMsSub 
+frame Kafka as KafkaMs <<ms>> {
+  node "Kafka Cluster" as KafkaCluster {
+    node Kafka <<container>> 
+  }
+}
+!endsub
+
+frame Zookeeper as ZookeeperMs <<ms>> {
+  node "Zookeeper Cluster" as ZookeperCluster {
+    node Zookeeper <<container>>
+  }
+}
+
+Kafka -l0)- Zookeeper
+Kafka -0)- KafkaConnect
+
+
+@enduml

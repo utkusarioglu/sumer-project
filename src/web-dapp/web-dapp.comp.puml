@@ -1,0 +1,27 @@
+@startuml Sumer WebDapp Component Diagram
+!include theme.puml
+title Sumer WebDapp Component Diagram
+
+!includesub ../cloud/web-dapp-server/web-dapp-server.comp.puml!WebDappServerMsSub
+
+component WebDapp {
+  port HttpsPort
+  port WssPort
+
+  component SocketIO <<library>> <<lazy>>
+  component Redux <<library>>
+  component Mui <<library>>
+  component MaticJs <<library>>
+  
+  HttpsPort -- SocketIO
+  WssPort -- SocketIO 
+
+  Redux - MaticJs
+  Redux - Mui
+  Redux - SocketIO
+}
+
+HttpsPort -0)- WebDappServer
+WssPort -0)- WebDappServer
+
+@enduml

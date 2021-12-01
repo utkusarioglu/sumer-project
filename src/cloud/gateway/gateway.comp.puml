@@ -1,0 +1,36 @@
+@startuml Sumer Gateway Component Diagram
+!include theme.puml
+title Sumer Gateway Component Diagram
+
+left to right direction
+
+component Gateway {
+  port WebsocketPort
+  port RestPort
+  port KafkaPort
+
+  component ExpressJs <<library>> 
+  component SocketIO <<library>>
+  component PassportJs <<library>>
+  component KafkaJs <<library>>
+
+  ExpressJs - SocketIO 
+  PassportJs - SocketIO
+  ExpressJs - PassportJs
+  
+  SocketIO --- RestPort
+  SocketIO --- WebsocketPort
+  ExpressJs --- RestPort
+  KafkaJs --- KafkaPort
+}
+
+[Ingress]
+
+Ingress -l-- RestPort
+Ingress -l-- WebsocketPort
+
+[Kafka]
+Kafka -r- KafkaPort
+
+
+@enduml

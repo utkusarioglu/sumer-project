@@ -1,0 +1,17 @@
+@startuml Sumer KafkaConnect Deployment Diagram
+!include theme.puml
+title Sumer KafkaConnect Deployment Diagram
+
+!includesub ./kafka.deploy.puml!KafkaMsSub
+
+!startsub KafkaConnectMsSub
+frame KafkaConnect as KafkaConnectMs <<ms>> {
+  node "KafkaConnect Cluster" as KafkaConnectCluster {
+    node KafkaConnect <<container>>
+  }
+}
+!endsub
+
+KafkaConnect -r0)- Kafka
+
+@enduml

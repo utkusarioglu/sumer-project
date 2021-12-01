@@ -1,0 +1,11 @@
+@startuml Sumer WebDapp Server Component Diagram
+!include theme.puml
+title Sumer WebDapp Server Component Diagram
+
+!startsub WebDappServerMsSub
+component "WebDapp Server" as WebDappServer {
+
+}
+!endsub
+
+@enduml

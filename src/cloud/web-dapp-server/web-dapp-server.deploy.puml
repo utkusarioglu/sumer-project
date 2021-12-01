@@ -1,0 +1,15 @@
+@startuml Sumer WebDapp Server Deployment Diagram
+!include theme.puml
+title Sumer WebDapp Server Deployment Diagram
+
+!includesub ../ingress/ingress.deploy.puml!IngressMsSub
+
+!startsub WebDappServerMsSub
+frame "WebDapp Server" as WebDappServerMs <<ms>> {
+  node WebDappServer <<container>>
+} 
+!endsub
+
+WebDappServer -l- Ingress
+
+@enduml
